@@ -1,0 +1,24 @@
+{
+  "name": "trip-advisor-crawler",
+  "version": "1.0.0",
+  "description": "Trip advisor crawler for Vietnamese travel",
+  "main": "index.js",
+  "scripts": {
+    "beach": "node components/crawl-beach.js",
+    "market": "node components/crawl-market.js",
+    "center": "node components/crawl-shopping-center.js",
+    "souvenir": "node components/crawl-souvenir-store.js",
+    "homestay": "node components/crawl-homestay.js",
+    "hotel": "node components/crawl-hotel.js",
+    "resort": "node components/crawl-resort.js",
+    "restaurant": "node components/crawl-restaurant.js",
+    "cafe": "node components/crawl-cafe.js",
+    "bar": "node components/crawl-bar.js"
+  },
+  "author": "Nguyen Quang Tu",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "puppeteer": "^10.4.0"
+  }
+}
