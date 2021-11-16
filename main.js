@@ -2,14 +2,18 @@ const fs = require("fs");
 const _ = require("lodash");
 const _formatLocation = (fullData) => {
   Object.values(fullData).forEach(data => {
-    const locations = data.locations;
-    if(locations[0]) {
-      locations[0] = locations[0]?.replace("Tỉnh", "");
-      locations[0] = locations[0]?.replace("Thành phố", "");
-      locations[0] = locations[0]?.trim();
-    }
-    if(location[1]) {
-      locations[1] = locations[1]?.trim();
+    let locations = data?.locations;
+    if(locations) {
+      locations = locations.filter(n => n);
+      if(locations[0]) {
+        locations[0] = locations[0]?.replace("Tỉnh", "");
+        locations[0] = locations[0]?.replace("Thành phố", "");
+        locations[0] = locations[0]?.trim();
+      }
+      if(locations[1]) {
+        locations[1] = locations[1]?.trim();
+      }
+      data.locations = locations;
     }
   })
   return fullData;
