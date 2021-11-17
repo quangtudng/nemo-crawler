@@ -11,9 +11,9 @@ const propertyCrawler = async (urls, fileName) => {
   );
   for (const url of urls) {
     let fullListObjectData = [];
+    await navigateToMainPage(page, url);
     for (let i = 0; i < 5; i++) {
       console.log("Crawling: " + url + " Page " + (i+1));
-      await navigateToMainPage(page, url);
       let listObjectData = await _crawlListPage(page);
       fullListObjectData.push(listObjectData);
       await _nextPage(page);
@@ -32,9 +32,10 @@ const propertyCrawler = async (urls, fileName) => {
   fs.writeFileSync(`./export/${fileName}-` + Date.now() + ".json", JSON.stringify(exportData), "utf-8");
 }
 const _nextPage = async (page) => {
-  return page.evaluate(async () => {
+  await page.evaluate(async () => {
     document.querySelector("[data-trackingstring='pagination_h'] > span:nth-child(2)").click();
   })
+  await page.waitForTimeout(5000);
 }
 const navigateToMainPage = async (page, url) => {
   await page.goto(url);
