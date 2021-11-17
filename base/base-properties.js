@@ -47,12 +47,12 @@ const _crawlListPage = async (page) => {
     const objectData = [];
     const linkElements = document.querySelectorAll("[data-prwidget-name='meta_hsx_responsive_listing'] > div > div:nth-child(1)");
     for (let element of linkElements) {
-      const url = element.childNodes[0].querySelector("div:nth-child(1) > a").href;
+      const url = element.childNodes[0].querySelector("div:nth-child(1) > a")?.href;
       let thumbnail = element.childNodes[0].querySelector("div:nth-child(1) > a > div > div > div > div > img");
       if (thumbnail) {
-        thumbnail = thumbnail.src;
+        thumbnail = thumbnail?.src;
       }
-      let price = element.querySelector(".price-wrap > div:last-child").innerText
+      let price = element.querySelector(".price-wrap > div:last-child")?.innerText
       objectData.push({ url, price, thumbnail });
     }
     return objectData;
@@ -112,7 +112,7 @@ const _getDetailPageInfo = async (page, detailUrl) => {
     }
     // Craw extra data
     const infoSections = document.querySelector("[data-test-target='hr-aft-info'] > div > div:nth-child(2) > div > div:nth-child(2) > div")
-    const fullAddress = infoSections.querySelector("div:nth-child(1) > div > span:nth-child(2) > span").innerText
+    const fullAddress = infoSections.querySelector("div:nth-child(1) > div > span:nth-child(2) > span")?.innerText
     const phoneNumber = infoSections.querySelector("div:nth-child(2) > div > a > span:nth-child(2)")?.innerText
     const amenities = [];
     const allAmenitiesElements = document.querySelectorAll("[data-test-target='amenity_text']");
