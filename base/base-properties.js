@@ -86,9 +86,9 @@ const _getDetailPageInfo = async (page, detailUrl) => {
     // Fetch location detail
     let locations = [];
     const breadCrumb = document.querySelector("[data-test-target='breadcrumbs']");
-    locations.push(breadCrumb.childNodes[2].innerText)
+    locations.push(breadCrumb.childNodes[2].innerText.trim())
     if(breadCrumb.childNodes[3].innerText && !breadCrumb.childNodes[3].innerText.includes("Khách sạn")) {
-      locations.push(breadCrumb.childNodes[3].innerText);
+      locations.push(breadCrumb.childNodes[3].innerText.trim());
     }
     // Fetch images
     let images = [];
@@ -129,3 +129,5 @@ const _getDetailPageInfo = async (page, detailUrl) => {
 module.exports = {
   propertyCrawler,
 }
+
+// Properties: Homestay, hotel, resort

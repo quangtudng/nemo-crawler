@@ -109,3 +109,5 @@ const _getDetailPageInfo = async (page, detailUrl) => {
 module.exports = {
   activityCrawler,
 }
+
+// Activities: Beach, market, souvenir

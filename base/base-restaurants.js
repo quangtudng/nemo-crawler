@@ -114,3 +114,5 @@ const _getDetailPageInfo = async (page, detailUrl) => {
 module.exports = {
   foodyCrawler,
 }
+
+// Food: bar, restaurant, cafe
